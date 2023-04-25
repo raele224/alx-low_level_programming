@@ -8,18 +8,16 @@
  */
 int main(void)
 {
-int lowerCase = 'a';
-while (lowerCase <= 'z')
+int n = 97;
+while (n <= 122)
 {
-if (lowerCase == 'e' || lowerCase == 'q');
+if (n == 101 || n == 113);
 {
-lowerCase += 1;
+n++;
+continue;
 }
-else
-{
-putchar(lowerCase);
-lowerCase += 1;
-}
+putchar(n);
+n++;
 }
 putchar('\n');
 return (0);
