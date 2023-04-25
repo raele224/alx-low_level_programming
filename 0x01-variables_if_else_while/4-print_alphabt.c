@@ -8,17 +8,16 @@
  */
 int main(void)
 {
-int n = 97;
-while (n <= 122)
+char c;
+
+for (c = 'a'; c <= 'z'; c++)
 {
-if (n == 101 || n == 113);
+if (c != 'e' && c != 'q')
 {
-n++;
-continue;
+putchar(c);
 }
-putchar(n);
-n++;
 }
+
 putchar('\n');
-return (0);
+return 0;
 }	
