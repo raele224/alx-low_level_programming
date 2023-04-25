@@ -4,9 +4,11 @@
  *
  * Return: Always 0 (Success)
  */
+
 int main(void)
 {
 int i, j;
+
 for (i = 0; i < 100; i++)
 {
 int first_digit = i / 10;
@@ -24,21 +26,14 @@ continue;
 
 putchar(first_digit + '0');
 putchar(second_digit + '0');
-putchar(',');
-putchar(' ');
+putchar(44 + (!(i == 98 && j == 99)) * 2);
+putchar(32);
 putchar(fd + '0');
 putchar(sd + '0');
-if (i == 98 && j == 99)
-{
-continue;
-}
-
-putchar(',');
-putchar(' ');
 }
 }
 
-putchar('\n');
+putchar(10);
 return (0);
 }
 
