@@ -26,14 +26,12 @@ continue;
 
 putchar(first_digit + '0');
 putchar(second_digit + '0');
-putchar(44 + (!(i == 98 && j == 99)) * 2);
-putchar(32);
+putchar((i == 98 && j == 99) ? '\n' : (',') * 2 + (' '));
+
 putchar(fd + '0');
 putchar(sd + '0');
 }
 }
 
-putchar(10);
 return (0);
 }
-
