@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-void my_function(int a, int b, int c);
+
 
 void positive_or_negative(int i);
 
