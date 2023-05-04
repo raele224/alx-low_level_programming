@@ -1,13 +1,10 @@
 #include <stdio.h>
+
 /**
  * main - Entry point
  *
- * Description: This program sets the value of an integer in an array
- * without directly referencing the array, only using a pointer.
- *
  * Return: Always 0 (Success)
  */
-
 int main(void)
 {
 int n;
@@ -16,7 +13,13 @@ int *p;
 
 a[2] = 1024;
 p = &n;
-*(p + 5) = 98;
+/*
+* You are not allowed to modify p
+* only one statement
+* you are not allowed to code anything else than this line of code
+*/
+*p = 98;
+/* ...so that this prints 98\n */
 printf("a[2] = %d\n", a[2]);
 return (0);
 }
