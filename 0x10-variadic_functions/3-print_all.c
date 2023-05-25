@@ -1,51 +1,89 @@
 #include <stdarg.h>
 #include <stdio.h>
+#include "variadic_functions.h"
 
 /**
- * print_all -Code that prints anything based on the format
- * @format: A list of types of arguments passed to the function
- *
- * Description: c: char, j: integer, f: float, s: char * (if NULL, print (nil))
- * Any other char is ignored
- * Prints a new line at the end of the function
+ * print_char - Prints a character.
+ * @args: The va_list that contains the character to be printed.
+ */
+void print_char(va_list args)
+{
+	printf("%c", va_arg(args, int));
+}
+
+/**
+ * print_int - Prints an integer.
+ * @args: The va_list that contains the integer to be printed.
+ */
+void print_int(va_list args)
+{
+	printf("%d", va_arg(args, int));
+}
+
+/**
+ * print_float - Prints a float.
+ * @args: The va_list that contains the float to be printed.
+ */
+void print_float(va_list args)
+{
+	printf("%f", va_arg(args, double));
+}
+
+/**
+ * print_string - Prints a string.
+ * @args: The va_list that contains the string to be printed.
+ */
+void print_string(va_list args)
+{
+	char *str = va_arg(args, char *);
+
+	if (str == NULL)
+		str = "(nil)";
+	printf("%s", str);
+}
+
+/**
+ * print_all - Prints anything.
+ * @format: The format string that specifies the types of arguments.
+ *            c: char
+ *            j: integer
+ *            f: float
+ *            s: char * (if the string is NULL, print (nil) instead)
  */
 void print_all(const char * const format, ...)
 {
 	va_list args;
 	unsigned int j = 0;
-	char *str;
-	int num;
-	float fnum;
+	void (*print_func)(va_list);
 
 	va_start(args, format);
 
-	while (format && format[j] && format[j + 1])
+	while (format && format[j])
 	{
-		if (format[j] == 'c')
+		print_func = NULL;
+
+		switch (format[j])
 		{
-			printf("%c", va_arg(args, int));
-		}
-		else if (format[j] == 'j')
-		{
-			num = va_arg(args, int);
-			printf("%d", num);
-		}
-		else if (format[j] == 'f')
-		{
-			fnum = va_arg(args, double);
-			printf("%f", fnum);
-		}
-		else if (format[j] == 's')
-		{
-			str = va_arg(args, char *);
-				if (str == NULL)
-				str = "(nil)";
-			printf("%s", str);
+			case 'c':
+				print_func = print_char;
+				break;
+			case 'j':
+				print_func = print_int;
+				break;
+			case 'f':
+				print_func = print_float;
+				break;
+			case 's':
+				print_func = print_string;
+				break;
 		}
 
-		if (format[j + 1] != '\0' && (format[j] == 'c' || format[j] == 'j' ||
-					format[j] == 'f' || format[j] == 's'))
-			printf(", ");
+		if (print_func)
+		{
+			print_func(args);
+			if (format[j + 1] != '\0')
+				printf(", ");
+		}
 
 		j++;
 	}
