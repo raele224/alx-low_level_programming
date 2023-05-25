@@ -19,7 +19,7 @@ void print_all(const char * const format, ...)
 
 	va_start(args, format);
 
-	while (format && format[j])
+	while (format && format[j] && format[j + 1])
 	{
 		if (format[j] == 'c')
 		{
