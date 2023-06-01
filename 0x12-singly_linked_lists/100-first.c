@@ -11,8 +11,9 @@ void __attribute__((constructor)) pre_main(void)
 	printf("I bore my house upon my back!\n");
 }
 /**
- * main - Main2 function
+ * main2 - Entry point for the second part of the program.
  *
+ *Description: This function prints a specific message.
  * Return: Always 0.
  */
 int main2(void)
