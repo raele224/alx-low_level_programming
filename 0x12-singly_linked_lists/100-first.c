@@ -11,11 +11,11 @@ void __attribute__((constructor)) pre_main(void)
 	printf("I bore my house upon my back!\n");
 }
 /**
- * main - Main function
+ * main - Main2 function
  *
  * Return: Always 0.
  */
-int main(void)
+int main2(void)
 {
 	return (0);
 }
