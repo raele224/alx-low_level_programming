@@ -23,7 +23,6 @@ size_t free_listint_safe(listint_t **h)
 	if (next >= current)
 	{
 	*h = NULL;
-	fprintf(stderr, "Error: loop detected in the list\n");
 	exit(98);
 	}
 
