@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include "lists.h"
-#include <stdio.h>
+
 /**
  * free_listint_safe - Function that frees a listint_t linked list.
  * @h: Double pointer to the head node of the list.
