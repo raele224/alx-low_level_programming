@@ -17,6 +17,7 @@ typedef struct listint_s
 } listint_t;
 
 /* Function prototype */
+size_t free_listint_safe(listint_t **h);
 size_t print_listint_safe(const listint_t *head);
 listint_t *reverse_listint(listint_t **head);
 int delete_nodeint_at_index(listint_t **head, unsigned int index);
