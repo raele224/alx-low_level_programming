@@ -3,7 +3,7 @@
 #include "lists.h"
 
 /**
- * print_listint_safe - A function that prints a listint_t linked list.
+ * print_listint_safe - Function that prints a listint_t linked list.
  * @head: Pointer to the head node of the list.
  *
  * Return: The number of nodes in the list.
@@ -11,22 +11,25 @@
 size_t print_listint_safe(const listint_t *head)
 {
 	const listint_t *current = head;
-	size_t node_count = 0;
+	size_t count = 0;
 
 	while (current != NULL)
+
 	{
 	printf("[%p] %d\n", (void *)current, current->n);
-	node_count++;
+	count++;
 
-	if (current <= current->next)
+	/* Check if the next node points back to a previous node */
+	if (current->next >= current)
 	{
 	printf("-> [%p] %d\n", (void *)current->next, current->next->n);
-	printf("-> Loop detected, exiting...\n");
+	fprintf(stderr, "Error: loop detected in the list\n");
 	exit(98);
 	}
 
 	current = current->next;
 	}
 
-	return (node_count);
+	return (count);
 }
+
